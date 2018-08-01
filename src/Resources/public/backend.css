@@ -1,0 +1,6 @@
+/*
+ * Backend Styles for "Vereinsverwaltung" Bundle
+ */
+#tl_navigation .group-verein {
+    background: url(logo.svg) 3px 2px no-repeat;
+}

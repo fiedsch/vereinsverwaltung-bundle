@@ -1,0 +1,26 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="row">
+  <div class="col-sm-12">
+  <h1>Mannschaftsseite <?= $this->mannschaft_name ?></h1>
+  </div>
+  <div class="col-sm-12">
+    <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+        <a href="<?= $this->mannschaft_bild ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
+            <img src="<?= $this->mannschaft_bild ?>" width="50px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
+        </a>
+    </figure>
+  </div>
+</div>
+
+<div class="row">
+  <div class="spielerliste col-md-6 col-xs-12">
+     <?= $this->spielerliste; ?>
+  </div>
+</div>
+
+<?php // $this->showTemplateVars() ?>
+
+<?php $this->endblock(); ?>

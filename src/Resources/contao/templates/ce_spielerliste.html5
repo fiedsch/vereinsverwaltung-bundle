@@ -1,0 +1,43 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php if ($this->listitems): ?>
+  <table class="table table-hover table-condensed">
+  <tbody>
+      <!--
+    <thead>
+    <tr>
+        <th>Name</th>
+        <?php // if ($this->showdetails): ?>
+            <th>&nbsp;</th>
+        <?php // endif; ?>
+    </tr>
+    </thead>
+    -->
+    <tbody>
+    <?php foreach ($this->listitems as $listitem): ?>
+      <tr>
+        <td><?= $listitem['member']->lastname ?>, <?= $listitem['member']->firstname ?></td>
+        <td><?= $listitem['spieler']->tc ? 'TC' : '' ?></td>
+          <?php // if ($this->showdetails): ?>
+          <td>
+            <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+              <a href="<?= $listitem['extra']['avatar_path'] ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
+                <img src="<?= $listitem['extra']['avatar_path'] ?>" width="50px" alt="<?= $listitem['member']->lastname ?>, <?= $listitem['member']->firstname ?>" itemprop="image">
+              </a>
+            </figure>
+          </td>
+          <?php // endif; ?>
+      </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php // $this->showTemplateVars() ?>
+
+<?php $this->endblock(); ?>
+
+
+

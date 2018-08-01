@@ -6,11 +6,6 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-/**
- * Content Element "Mannschaftsseite".
- *
- * @author Andreas Fieger <https://github.com/fiedsch>
- */
 namespace Fiedsch\VereinsverwaltungBundle;
 
 use Contao\BackendTemplate;
@@ -18,6 +13,11 @@ use Contao\ContentElement;
 use Contao\ContentModel;
 use Patchwork\Utf8;
 use \Contao\FilesModel;
+
+/**
+ * @property integer $id
+ * @property integer $mannschaft
+ */
 
 class ContentMannschaftsseite extends ContentElement
 {
@@ -37,11 +37,6 @@ class ContentMannschaftsseite extends ContentElement
             $objTemplate = new BackendTemplate('be_wildcard');
 
             $headline = $this->headline;
-            if (!$headline) {
-                $mannschaftModel = MannschaftModel::findById($this->mannschaft);
-                $headline = $mannschaftModel->getFullName();
-            }
-
             $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['mannschaftsseite'][0]) . ' ###';
             $objTemplate->id = $this->id;
             $objTemplate->link = $headline;

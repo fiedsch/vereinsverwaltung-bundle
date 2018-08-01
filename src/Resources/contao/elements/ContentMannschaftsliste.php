@@ -18,6 +18,13 @@ namespace Fiedsch\VereinsverwaltungBundle;
 use Contao\ContentElement;
 use Contao\BackendTemplate;
 
+/**
+ * Class ContentMannschaftsliste
+ *
+ * @package Fiedsch\VereinsverwaltungBundle
+ *
+ * @property integer $liga
+ */
 class ContentMannschaftsliste extends ContentElement
 {
     /**
@@ -33,9 +40,7 @@ class ContentMannschaftsliste extends ContentElement
             $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->title = $this->headline;
 
-
             $liga = LigaModel::findById($this->liga);
-            $suffix = 'Mannschaften';
             $subject = sprintf('%s %s',
                 $liga->getRelated('pid')->name,
                 $liga->name
@@ -60,6 +65,7 @@ class ContentMannschaftsliste extends ContentElement
         }
 
         $listitems = [];
+        /** @var MannschaftModel $mannschaft */
         foreach ($mannschaften as $mannschaft) {
             $listitem = $mannschaft->getLinkedName();
             $listitems[] = $listitem;

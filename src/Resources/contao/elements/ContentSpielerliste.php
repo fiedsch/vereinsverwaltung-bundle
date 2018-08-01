@@ -17,6 +17,11 @@ namespace Fiedsch\VereinsverwaltungBundle;
 use Contao\ContentElement;
 use \Contao\FilesModel;
 
+/**
+ * @property integer $mannschaft
+ * @property boolean $showdetails
+ */
+
 class ContentSpielerliste extends ContentElement
 {
     /**

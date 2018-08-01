@@ -60,9 +60,6 @@ class ModuleMannschaftsseitenReader extends Module
      */
     protected function compile()
     {
-        /** @var \PageModel $objPage */
-        global $objPage;
-
         // Falls wir einen Back-Link einbauen wollen:
         // $this->Template->referer = 'javascript:history.go(-1)';
         // $this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];

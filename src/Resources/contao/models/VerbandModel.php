@@ -4,6 +4,12 @@ namespace Fiedsch\VereinsverwaltungBundle;
 
 use Contao\Model;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @method static VerbandModel|null findById($id, array $arrOptions = [])
+ */
+
 class VerbandModel extends Model
 {
     /**

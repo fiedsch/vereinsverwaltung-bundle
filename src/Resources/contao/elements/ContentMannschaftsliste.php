@@ -1,15 +1,11 @@
 <?php
 
 /**
- * @package Vereinsverwaltung
+ * @package Fiedsch\VereinsverwaltungBundle
  * @link https://github.com/fiedsch/contao-vereinsverwaltung-bundle/
  * @license https://opensource.org/licenses/MIT
- */
-
-namespace Fiedsch\VereinsverwaltungBundle;
-/**
- * Content element "Liste aller Mannschaften einer Liga".
  *
+ * Content element "Liste aller Mannschaften einer Liga".
  * @author Andreas Fieger <https://github.com/fiedsch>
  */
 
@@ -21,9 +17,7 @@ use Contao\BackendTemplate;
 /**
  * Class ContentMannschaftsliste
  *
- * @package Fiedsch\VereinsverwaltungBundle
- *
- * @property integer $liga
+ * @property string $verband
  */
 class ContentMannschaftsliste extends ContentElement
 {
@@ -40,12 +34,15 @@ class ContentMannschaftsliste extends ContentElement
             $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->title = $this->headline;
 
-            $liga = LigaModel::findById($this->liga);
-            $subject = sprintf('%s %s',
-                $liga->getRelated('pid')->name,
-                $liga->name
-            );
-            $objTemplate->wildcard = "### " . $GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0] . " $subject ###";
+            $subject = [];
+            if ($this->verband) {
+                foreach (deserialize($this->verband) as $verband) {
+                    $verband = VerbandModel::findById($verband);
+                    $subject[] = $verband->name;
+                }
+            }
+
+            $objTemplate->wildcard = "### " . $GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0] . ' ' . implode(',', $subject) . " ###";
             return $objTemplate->parse();
         }
         return parent::generate();
@@ -56,23 +53,51 @@ class ContentMannschaftsliste extends ContentElement
      */
     public function compile()
     {
-        if ($this->liga == '') {
-            return;
-        }
-        $mannschaften = MannschaftModel::findByPid($this->liga, ['order' => 'name ASC']);
-        if ($mannschaften === null) {
-            return;
+        $this->Template->mannschaftsliste = [];
+
+        // if ($this->verband == '') { return; } // 'verband' ist mandatory
+
+        // Dreideimensionaler Array: [verband][liga][mannschaft]
+        $mannschaftsliste = [];
+
+        $verbandIds = deserialize($this->verband);
+        // if (!$verbandIds) { return; } // 'verband' ist mandatory
+        $verbandIdListe = join(',', $verbandIds);
+
+        $query = "
+            SELECT 
+              m.id as mid, m.name as mname,
+              l.id as lid, l.name as lname,
+              v.id as vid, v.name as vname
+            FROM tl_mannschaft m
+            LEFT JOIN tl_liga l ON (m.pid=l.id)
+            LEFT JOIN tl_verband v ON (l.pid=v.id)
+            WHERE v.id IN ($verbandIdListe)
+            ORDER BY l.id, m.name
+        ";
+        // ^^^ TODO Sortieren nach l."sortierfeld" wie Spielstärke o.Ä.
+
+        $rows = $this->Database->prepare($query)->execute();
+
+        if (!$rows) { return; }
+        $verbandMapping = [];
+        $ligaMapping = [];
+        while ($rows->next()) {
+            $mannschaftsliste[$rows->vid][$rows->lid][] = MannschaftModel::linkName($rows->mname, $rows->mid);
+            $verbandMapping[$rows->vid] = $rows->vname;
+            $ligaMapping[$rows->lid] = $rows->lname;
         }
 
-        $listitems = [];
-        /** @var MannschaftModel $mannschaft */
-        foreach ($mannschaften as $mannschaft) {
-            $listitem = $mannschaft->getLinkedName();
-            $listitems[] = $listitem;
-        }
+        // Mannschaftsliste nach der Reihenfolge in $this->verband sortieren,
+        // die im Backend vorgegeben werden kann (checkboxWizard).
 
-        $this->Template->listitems = $listitems;
+        uksort($mannschaftsliste, function($a, $b) use ($verbandIds) {
+            return array_search($a, $verbandIds) <=> array_search($b, $verbandIds);
+        });
 
+        $this->Template->mannschaftsliste = $mannschaftsliste;
+        $this->Template->verbaende = $verbandMapping;
+        $this->Template->ligen = $ligaMapping;
     }
 
 }

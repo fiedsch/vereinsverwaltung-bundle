@@ -4,9 +4,7 @@
  * @package Vereinsverwaltung
  * @link https://github.com/fiedsch/contao-vereinsverwaltung-bundle/
  * @license https://opensource.org/licenses/MIT
- */
-
-/**
+ *
  * Content element "Liste aller Spieler einer Mannaschft".
  *
  * @author Andreas Fieger <https://github.com/fiedsch>
@@ -18,6 +16,8 @@ use Contao\ContentElement;
 use \Contao\FilesModel;
 
 /**
+ * Class ContentSpielerliste
+ *
  * @property integer $mannschaft
  * @property boolean $showdetails
  */

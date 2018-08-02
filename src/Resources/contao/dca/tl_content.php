@@ -7,25 +7,24 @@
  */
 
 /* Mannschaftsliste */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['mannschaftsliste'] = '{type_legend},type,headline;{liga_legend},liga;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
-$GLOBALS['TL_DCA']['tl_content']['fields']['liga'] = [
-    'label'            => &$GLOBALS['TL_LANG']['tl_content']['liga'],
+$GLOBALS['TL_DCA']['tl_content']['palettes']['mannschaftsliste'] = '{type_legend},type,headline;{verband_legend},verband;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
+$GLOBALS['TL_DCA']['tl_content']['fields']['verband'] = [
+    'label'            => &$GLOBALS['TL_LANG']['tl_content']['verband'],
     'exclude'          => true,
     'foreignKey'       => '',
-    'inputType'        => 'select',
-    'eval'             => ['mandatory' => true, 'tl_class' => 'w50', 'chosen' => true, 'includeBlankOption' => true],
-    // // 'options_callback' => ['\Fiedsch\LigaverwaltungBundle\DCAHelper', 'getAlleLigenForSelect'],
+    'inputType'        => 'checkboxWizard',
+    'eval'             => ['mandatory' => true, 'multiple' => true, 'tl_class' => 'w50'],
     'options_callback' => function() {
         $result = [];
-        $ligen = \Fiedsch\VereinsverwaltungBundle\LigaModel::findAll();
-        if ($ligen) {
-            foreach ($ligen as $liga) {
-                $result[$liga->id] = $liga->name;
+        $verbaende = \Fiedsch\VereinsverwaltungBundle\VerbandModel::findAll();
+        if ($verbaende) {
+            foreach ($verbaende as $verband) {
+                $result[$verband->id] = $verband->name;
             }
         }
         return $result;
     },
-    'sql'              => "int(10) unsigned NOT NULL default '0'",
+    'sql'              => "blob NULL",
 ];
 
 /* Spielerliste */

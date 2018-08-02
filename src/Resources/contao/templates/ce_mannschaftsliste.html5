@@ -2,13 +2,11 @@
 
 <?php $this->block('content'); ?>
 
-<?php if ($this->listitems): ?>
-  <ul>
-    <?php foreach ($this->listitems as $listitem): ?>
-      <li><?= $listitem ?></li>
-    <?php endforeach; ?>
-  </ul>
-<?php endif; ?>
+<pre>
+  <?php print_r($this->mannschaftsliste); ?>
+  <?php print_r($this->verbaende); ?>
+  <?php print_r($this->ligen); ?>
+</pre>
 
 <?php $this->endblock(); ?>
 

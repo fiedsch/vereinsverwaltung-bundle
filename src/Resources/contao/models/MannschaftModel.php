@@ -30,14 +30,24 @@ class MannschaftModel extends Model
      */
     public function getLinkedName()
     {
+        return self::linkName($this->name, $this->id);
+    }
+
+    /**
+     * @param string $name
+     * @param int $id
+     * @return string
+     */
+    public static function linkName($name, $id)
+    {
         $teampageId = Config::get('teampage');
         if ($teampageId) {
             $teampage = PageModel::findById($teampageId);
             return sprintf('<a href="%s">%s</a>',
-                $teampage->getFrontendUrl("/id/".$this->id),
-                $this->name
+                $teampage->getFrontendUrl("/id/".$id),
+                $name
             );
         }
-        return $this->name;
+        return $name;
     }
 }

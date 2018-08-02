@@ -15,6 +15,8 @@ use Patchwork\Utf8;
 use \Contao\FilesModel;
 
 /**
+ * Class ContentMannschaftsseite
+ *
  * @property integer $id
  * @property integer $mannschaft
  */

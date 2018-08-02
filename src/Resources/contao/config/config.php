@@ -3,12 +3,12 @@
 /**
  * Backendmodule
  */
-array_insert($GLOBALS['BE_MOD'], 2, [
-    'verein' => [
-        'liga.verband' => [
+array_insert($GLOBALS['BE_MOD'], 3, [
+    'vereinsverwaltung' => [
+        'verband' => [
             'tables' => ['tl_verband', 'tl_liga', 'tl_mannschaft', 'tl_spieler'],
         ]
-    ],
+    ]
 ]);
 
 /**
@@ -17,7 +17,6 @@ array_insert($GLOBALS['BE_MOD'], 2, [
 $GLOBALS['TL_CTE']['vereinsverwaltung']['mannschaftsliste'] = '\Fiedsch\VereinsverwaltungBundle\ContentMannschaftsliste';
 $GLOBALS['TL_CTE']['vereinsverwaltung']['spielerliste'] = '\Fiedsch\VereinsverwaltungBundle\ContentSpielerliste';
 $GLOBALS['TL_CTE']['vereinsverwaltung']['mannschaftsseite'] = '\Fiedsch\VereinsverwaltungBundle\ContentMannschaftsseite';
-
 
 /**
  * Module

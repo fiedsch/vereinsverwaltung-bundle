@@ -2,11 +2,19 @@
 
 <?php $this->block('content'); ?>
 
-<pre>
-  <?php print_r($this->mannschaftsliste); ?>
-  <?php print_r($this->verbaende); ?>
-  <?php print_r($this->ligen); ?>
-</pre>
+<div class="col-sm-12">
+  <?php foreach($this->mannschaftsliste as $verbandId => $ligen): ?>
+    <h2><?= $this->verbaende[$verbandId] ?></h2>
+    <?php foreach($ligen as $ligaId => $mannschaften): ?>
+      <h3><?= $this->ligen[$ligaId] ?></h3>
+      <ul>
+      <?php foreach($mannschaften as $name): ?>
+          <li><?= $name ?></li>
+      <?php endforeach; ?>
+      </ul>
+    <?php endforeach; ?>
+  <?php endforeach; ?>
+</div>
 
 <?php $this->endblock(); ?>
 

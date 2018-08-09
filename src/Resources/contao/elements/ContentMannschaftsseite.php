@@ -50,13 +50,6 @@ class ContentMannschaftsseite extends ContentElement
     }
 
     /**
-     * Add the following to fe_page.html5 or (if using Bootsrap for Contao) to fe_bootstrap_xx.html5:
-     * ```
-     * <?php if (!strpos($head, "description") === false): ?>
-     * <meta name="description" content="<?php echo $this->description; ?>">
-     * <?php endif; ?>
-     * ```
-     *
      * @param string $content
      */
     protected function addDescriptionToTlHead($content)
@@ -88,7 +81,7 @@ class ContentMannschaftsseite extends ContentElement
         $contentModel->mannschaft = $this->mannschaft;
         $contentModel->showdetails = '1';
         $contentModel->headline = [
-            'value' => 'Spielerliste ' . $mannschaftModel->name,
+            'value' => 'Spieler',
             'unit'  => 'h2',
         ];
         $contentElement = new ContentSpielerliste($contentModel);

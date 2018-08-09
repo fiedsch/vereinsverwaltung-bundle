@@ -49,9 +49,16 @@ class ContentSpielerliste extends ContentElement
         $listitems = [];
         foreach ($allespieler as $spieler) {
             $member = $spieler->getRelated('member_id');
-            $file = FilesModel::findByUuid($member->avatar);
-            $extra['avatar_path'] = $file->path;
-            $listitems[] = ['member' => $member, 'spieler' => $spieler, 'extra' => $extra];
+            if ($member) {
+                $file = FilesModel::findByUuid($member->avatar);
+                $listitems[] = [
+                    'member'  => $member,
+                    'spieler' => $spieler,
+                    'extra'   => [
+                         'avatar_path' => $file ? $file->path : null
+                    ]
+                ];
+            }
         }
 
         $this->Template->listitems   = $listitems;

@@ -75,7 +75,7 @@ $GLOBALS['TL_DCA']['tl_liga'] = [
 
     'palettes' => [
         '__selector__' => [],
-        'default'      => '{title_legend},name',
+        'default'      => '{title_legend},name,spielstaerke',
     ], // palettes
 
     'fields' => [
@@ -103,6 +103,15 @@ $GLOBALS['TL_DCA']['tl_liga'] = [
             'eval'      => ['tl_class' => 'w50', 'maxlength' => 128],
             'flag'      => 1, // Sort by initial letter ascending,
             'sql'       => "varchar(128) NOT NULL default ''",
+        ],
+        'spielstaerke' => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_liga']['spielstaerke'],
+            'exclude'   => true,
+            'search'    => false,
+            'filter'    => false,
+            'inputType' => 'text',
+            'eval'      => ['tl_class' => 'w50', 'rgxp' => 'digit', 'maxlength' => 8, 'mandatory' => true],
+            'sql'       => "int(10) unsigned NOT NULL default '0'",
         ],
     ], // fields
 

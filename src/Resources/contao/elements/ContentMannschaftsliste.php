@@ -73,9 +73,8 @@ class ContentMannschaftsliste extends ContentElement
             LEFT JOIN tl_liga l ON (m.pid=l.id)
             LEFT JOIN tl_verband v ON (l.pid=v.id)
             WHERE v.id IN ($verbandIdListe)
-            ORDER BY l.id, m.name
+            ORDER BY l.spielstaerke, m.name
         ";
-        // ^^^ TODO Sortieren nach l."sortierfeld" wie Spielstärke o.Ä.
 
         $rows = $this->Database->prepare($query)->execute();
 

@@ -13,6 +13,7 @@ namespace Fiedsch\VereinsverwaltungBundle;
 
 use Contao\ContentElement;
 use Contao\BackendTemplate;
+use Patchwork\Utf8;
 
 /**
  * Class ContentMannschaftsliste
@@ -42,7 +43,7 @@ class ContentMannschaftsliste extends ContentElement
                 }
             }
 
-            $objTemplate->wildcard = "### " . $GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0] . ' ' . implode(',', $subject) . " ###";
+            $objTemplate->wildcard = "### " . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0]) . ' ' . implode(',', $subject) . " ###";
             return $objTemplate->parse();
         }
         return parent::generate();

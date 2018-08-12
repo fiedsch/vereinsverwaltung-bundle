@@ -74,7 +74,7 @@ class ContentMannschaftsliste extends ContentElement
             LEFT JOIN tl_liga l ON (m.pid=l.id)
             LEFT JOIN tl_verband v ON (l.pid=v.id)
             WHERE v.id IN ($verbandIdListe)
-            ORDER BY l.spielstaerke, m.name
+            ORDER BY l.spielstaerke, l.name, m.name
         ";
 
         $rows = $this->Database->prepare($query)->execute();

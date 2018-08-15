@@ -71,6 +71,7 @@ class ContentMannschaftsseite extends ContentElement
         $this->addDescriptionToTlHead("Alles zur Mannschaft " . $mannschaftModel->name);
 
         $this->Template->mannschaft_name = $mannschaftModel->name;
+        $this->Template->verbandsseite = $mannschaftModel->website;
         if ($mannschaftModel->avatar) {
             $this->Template->mannschaft_bild = FilesModel::findByUuid($mannschaftModel->avatar)->path;
         }

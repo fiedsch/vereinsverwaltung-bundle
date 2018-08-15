@@ -7,13 +7,18 @@
   <h1><?= $this->mannschaft_name ?></h1>
   </div>
   <?php if ($this->mannschaft_bild): ?>
-  <div class="col-sm-12">
-    <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+    <div class="col-sm-12">
+      <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
         <a href="<?= $this->mannschaft_bild ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
-            <img src="<?= $this->mannschaft_bild ?>" class="img-thumbnail" width="250px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
+          <img src="<?= $this->mannschaft_bild ?>" class="img-thumbnail" width="250px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
         </a>
-    </figure>
-  </div>
+      </figure>
+    </div>
+    <?php if ($this->verbandsseite): ?>
+      <div class="col-sm-12">
+        <a href="<?= $this->verbandsseite ?>">Spielplan und Tabellen</a>
+      </div>
+    <?php endif; ?>
   <?php endif; ?>
 </div>
 

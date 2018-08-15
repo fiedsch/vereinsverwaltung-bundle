@@ -85,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_mannschaft'] = [
 
     'palettes' => [
         '__selector__' => [],
-        'default'      => '{title_legend},name,avatar',
+        'default'      => '{title_legend},name,avatar,website',
     ], // palettes
 
     'fields' => [
@@ -120,6 +120,15 @@ $GLOBALS['TL_DCA']['tl_mannschaft'] = [
             'inputType' => 'fileTree',
             'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'radio', 'filesOnly' => true, 'extensions' => 'jpg,png', 'icon' => 'pickfile.svg'],
             'sql'       => "blob NULL",
+        ],
+
+        'website' => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_mannschaft']['website'],
+            'exclude'   => true,
+            'search'    => true,
+            'inputType' => 'text',
+            'eval'      => ['rgxp' => 'url', 'maxlength' => 255, 'tl_class' => 'w50'],
+            'sql'       => "varchar(255) NOT NULL default ''"
         ],
 
     ], // fields

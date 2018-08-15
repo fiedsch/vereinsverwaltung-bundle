@@ -16,3 +16,8 @@ $GLOBALS['TL_LANG']['tl_mannschaft']['new'] = [
     'Neue Mannschaft',
     'Eine neue Mannschaft anlegen.'
 ];
+
+$GLOBALS['TL_LANG']['tl_mannschaft']['website'] = [
+    'Mannschaftsseite',
+    'Mannschaftsseite auf der Verbandshomepage.'
+];

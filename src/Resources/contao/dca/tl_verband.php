@@ -99,7 +99,7 @@ $GLOBALS['TL_DCA']['tl_verband'] = [
             'search'    => false,
             'filter'    => false,
             'inputType' => 'fileTree',
-            'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'radio', 'filesOnly' => true, 'extensions' => 'jpg,png', 'icon' => 'pickfile.svg'],
+            'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'radio', 'filesOnly' => true, 'extensions' => 'svg,jpg,png', 'icon' => 'pickfile.svg'],
             'sql'       => "blob NULL",
         ],
 

@@ -13,6 +13,7 @@ namespace Fiedsch\VereinsverwaltungBundle;
 
 use Contao\ContentElement;
 use Contao\BackendTemplate;
+use Contao\FilesModel;
 use Patchwork\Utf8;
 
 /**
@@ -83,8 +84,19 @@ class ContentMannschaftsliste extends ContentElement
         $verbandMapping = [];
         $ligaMapping = [];
         while ($rows->next()) {
+            $verbandlogo = '';
+            $verband = VerbandModel::findById($rows->vid);
+            if ($verband) {
+                $file = FilesModel::findByUuid($verband->logo);
+                if ($file) {
+                    $verbandlogo = $file->path;
+                }
+            }
             $mannschaftsliste[$rows->vid][$rows->lid][] = MannschaftModel::linkName($rows->mname, $rows->mid);
-            $verbandMapping[$rows->vid] = $rows->vname;
+            $verbandMapping[$rows->vid] = [
+                'name' => $rows->vname,
+                'logo' => $verbandlogo
+            ];
             $ligaMapping[$rows->lid] = $rows->lname;
         }
 

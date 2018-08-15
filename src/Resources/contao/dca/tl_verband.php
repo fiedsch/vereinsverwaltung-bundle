@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA']['tl_verband'] = [
 
     'palettes' => [
         '__selector__' => [],
-        'default'      => '{title_legend},name',
+        'default'      => '{title_legend},name,logo',
     ], // palettes
 
     'fields' => [
@@ -91,6 +91,16 @@ $GLOBALS['TL_DCA']['tl_verband'] = [
             'inputType' => 'text',
             'eval'      => ['tl_class' => 'long', 'maxlength' => 128],
             'sql'       => "varchar(128) NOT NULL default ''",
+        ],
+
+        'logo' => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_verband']['logo'],
+            'exclude'   => true,
+            'search'    => false,
+            'filter'    => false,
+            'inputType' => 'fileTree',
+            'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'radio', 'filesOnly' => true, 'extensions' => 'jpg,png', 'icon' => 'pickfile.svg'],
+            'sql'       => "blob NULL",
         ],
 
     ], // fields

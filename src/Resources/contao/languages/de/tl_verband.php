@@ -12,7 +12,7 @@ $GLOBALS['TL_LANG']['tl_verband']['new'] = [
     'Einen neuen Verband anlegen.'
 ];
 
-$GLOBALS['TL_LANG']['tl_member']['logo'] = [
+$GLOBALS['TL_LANG']['tl_verband']['logo'] = [
     'Logo',
     'Logo des Verbands.'
 ];

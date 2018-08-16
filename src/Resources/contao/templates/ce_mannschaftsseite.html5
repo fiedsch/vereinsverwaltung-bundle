@@ -16,7 +16,7 @@
     </div>
     <?php if ($this->verbandsseite): ?>
       <div class="col-sm-12">
-        <a href="<?= $this->verbandsseite ?>">Spielplan und Tabellen</a>
+        <a target="_blank" href="<?= $this->verbandsseite ?>">Spielplan und Tabellen</a>
       </div>
     <?php endif; ?>
   <?php endif; ?>

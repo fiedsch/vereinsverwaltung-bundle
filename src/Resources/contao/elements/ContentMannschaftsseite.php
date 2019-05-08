@@ -74,6 +74,14 @@ class ContentMannschaftsseite extends ContentElement
         $this->Template->verbandsseite = $mannschaftModel->website;
         if ($mannschaftModel->avatar) {
             $this->Template->mannschaft_bild = FilesModel::findByUuid($mannschaftModel->avatar)->path;
+            /* // TODO(?)
+             * $imageObj = new Image(new File('example.jpg'));
+             * $src = $imageObj->setTargetWidth(640)
+             *                 ->setTargetHeight(480)
+             *                 ->setResizeMode('center_center')
+             *                 ->executeResize()
+             *                 ->getResizedPath();
+             */
         }
 
         // Spielerliste

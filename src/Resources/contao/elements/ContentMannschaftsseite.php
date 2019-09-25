@@ -72,17 +72,23 @@ class ContentMannschaftsseite extends ContentElement
 
         $this->Template->mannschaft_name = $mannschaftModel->name;
         $this->Template->verbandsseite = $mannschaftModel->website;
+
+        $mannschaft_bilder = null;
         if ($mannschaftModel->avatar) {
-            $this->Template->mannschaft_bild = FilesModel::findByUuid($mannschaftModel->avatar)->path;
-            /* // TODO(?)
-             * $imageObj = new Image(new File('example.jpg'));
-             * $src = $imageObj->setTargetWidth(640)
-             *                 ->setTargetHeight(480)
-             *                 ->setResizeMode('center_center')
-             *                 ->executeResize()
-             *                 ->getResizedPath();
-             */
+            $mannschaft_bilder = [];
+            foreach (deserialize($mannschaftModel->avatar) as $uuid) {
+                $mannschaft_bilder[] = FilesModel::findByUuid($uuid)->path;
+                /* // TODO(?)
+                 * $imageObj = new Image(new File('example.jpg'));
+                 * $src = $imageObj->setTargetWidth(640)
+                 *                 ->setTargetHeight(480)
+                 *                 ->setResizeMode('center_center')
+                 *                 ->executeResize()
+                 *                 ->getResizedPath();
+                 */
+            }
         }
+        $this->Template->mannschaft_bilder = $mannschaft_bilder;
 
         // Spielerliste
         $contentModel = new ContentModel();

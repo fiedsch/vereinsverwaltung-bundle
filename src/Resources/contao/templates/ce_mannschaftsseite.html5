@@ -2,18 +2,25 @@
 
 <?php $this->block('content'); ?>
 
-<div class="row">
-  <div class="col-sm-12">
-  <h1><?= $this->mannschaft_name ?></h1>
+  <div class="row">
+      <div class="col-sm-12">
+          <h1><?= $this->mannschaft_name ?></h1>
+      </div>
   </div>
-  <?php if ($this->mannschaft_bild): ?>
-    <div class="col-sm-12">
-      <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
-        <a href="<?= $this->mannschaft_bild ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
-          <img src="<?= $this->mannschaft_bild ?>" class="img-thumbnail" width="250px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
-        </a>
-      </figure>
-    </div>
+
+  <?php if ($this->mannschaft_bilder): ?>
+  <div class="row">
+      <?php foreach($this->mannschaft_bilder as $mannschaft_bild): ?>
+        <div class="col-sm-12 col-md-4">
+          <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+              <a href="<?= $mannschaft_bild ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
+                  <img src="<?= $mannschaft_bild ?>" class="img-thumbnail" width="250px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
+              </a>
+          </figure>
+        </div>
+    <?php endforeach; ?>
+  </div>
+
     <?php if ($this->verbandsseite): ?>
       <div class="col-sm-12">
         <a target="_blank" href="<?= $this->verbandsseite ?>">Spielplan und Tabellen</a>

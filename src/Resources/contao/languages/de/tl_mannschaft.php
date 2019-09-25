@@ -8,8 +8,13 @@ $GLOBALS['TL_LANG']['tl_mannschaft']['name'] = [
 ];
 
 $GLOBALS['TL_LANG']['tl_mannschaft']['avatar'] = [
-    'Bild/Logo',
-    'Bild/Logo der Mannschaft.'
+    'Bilder/Logos',
+    'Bilder/Logos der Mannschaft.'
+];
+
+$GLOBALS['TL_LANG']['tl_mannschaft']['order_avatar'] = [
+  'Bilder Sortierreihenfolge',
+  'Sortierreihenfolger der ausgewählten Bilder'
 ];
 
 $GLOBALS['TL_LANG']['tl_mannschaft']['new'] = [

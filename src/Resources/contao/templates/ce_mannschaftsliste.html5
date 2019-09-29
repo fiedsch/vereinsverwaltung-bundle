@@ -2,7 +2,7 @@
 
 <?php $this->block('content'); ?>
 
-<div class="col-sm-12">
+<div>
   <?php foreach($this->mannschaftsliste as $verbandId => $ligen): ?>
     <h2><?= $this->verbaende[$verbandId]['name'] ?></h2>
     <?php if ($this->verbaende[$verbandId]['logo']): ?>

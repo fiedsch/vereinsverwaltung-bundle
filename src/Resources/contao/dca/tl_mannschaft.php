@@ -118,7 +118,7 @@ $GLOBALS['TL_DCA']['tl_mannschaft'] = [
             'search'    => false,
             'filter'    => false,
             'inputType' => 'fileTree',
-            'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'checkbox', 'multiple' => true, 'orderField' => 'order_avatar', 'filesOnly' => true, 'extensions' => 'jpg,png', 'icon' => 'pickfile.svg'],
+            'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'checkbox', 'multiple' => true, 'orderField' => 'order_avatar', 'filesOnly' => true, 'extensions' => 'jpg,jpeg,png', 'icon' => 'pickfile.svg'],
             'sql'       => "blob NULL",
         ],
 

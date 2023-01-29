@@ -1,5 +1,7 @@
 <?php
 
+\Contao\System::loadLanguageFile('default');
+
 $GLOBALS['TL_DCA']['tl_mannschaft'] = [
     'config' => [
         'dataContainer'    => 'Table',

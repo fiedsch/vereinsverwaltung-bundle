@@ -1,10 +1,12 @@
 <?php
 
+use Contao\DC_Table;
+
 \Contao\System::loadLanguageFile('default');
 
 $GLOBALS['TL_DCA']['tl_liga'] = [
     'config' => [
-        'dataContainer' => 'Table',
+        'dataContainer' => DC_Table::class,
         'enableVersioning' => true,
         'ptable' => 'tl_verband',
         'ctable' => ['tl_mannschaft'],

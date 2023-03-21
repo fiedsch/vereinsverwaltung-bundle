@@ -6,7 +6,7 @@ use Contao\DC_Table;
 
 $GLOBALS['TL_DCA']['tl_mannschaft'] = [
     'config' => [
-        'dataContainer'    => \DC_Table::class,
+        'dataContainer'    => DC_Table::class,
         'enableVersioning' => true,
         'ptable' => 'tl_liga',
         'ctable' => ['tl_spieler'],

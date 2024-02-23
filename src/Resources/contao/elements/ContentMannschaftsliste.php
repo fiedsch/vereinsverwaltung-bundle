@@ -14,7 +14,8 @@ namespace Fiedsch\VereinsverwaltungBundle;
 use Contao\ContentElement;
 use Contao\BackendTemplate;
 use Contao\FilesModel;
-use Patchwork\Utf8;
+use Contao\StringUtil;
+use function Symfony\Component\String\u;
 
 /**
  * Class ContentMannschaftsliste
@@ -30,7 +31,7 @@ class ContentMannschaftsliste extends ContentElement
      */
     protected $strTemplate = 'ce_mannschaftsliste';
 
-    public function generate()
+    public function generate(): string
     {
         if (TL_MODE == 'BE') {
             $objTemplate = new BackendTemplate('be_wildcard');
@@ -38,13 +39,13 @@ class ContentMannschaftsliste extends ContentElement
 
             $subject = [];
             if ($this->verband) {
-                foreach (deserialize($this->verband) as $verband) {
+                foreach (StringUtil::deserialize($this->verband) as $verband) {
                     $verband = VerbandModel::findById($verband);
                     $subject[] = $verband->name;
                 }
             }
 
-            $objTemplate->wildcard = "### " . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0]) . ' ' . implode(',', $subject) . " ###";
+            $objTemplate->wildcard = "### " . u($GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0])->upper() . ' ' . implode(',', $subject) . " ###";
             return $objTemplate->parse();
         }
         return parent::generate();
@@ -53,7 +54,7 @@ class ContentMannschaftsliste extends ContentElement
     /**
      * Generate the content element
      */
-    public function compile()
+    public function compile(): void
     {
         $this->Template->mannschaftsliste = [];
 
@@ -62,7 +63,7 @@ class ContentMannschaftsliste extends ContentElement
         // Dreideimensionaler Array: [verband][liga][mannschaft]
         $mannschaftsliste = [];
 
-        $verbandIds = deserialize($this->verband);
+        $verbandIds = StringUtil::deserialize($this->verband);
         // if (!$verbandIds) { return; } // 'verband' ist mandatory
         $verbandIdListe = join(',', $verbandIds);
 

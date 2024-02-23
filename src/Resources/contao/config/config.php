@@ -1,9 +1,11 @@
 <?php
 
+
+use Contao\ArrayUtil;
 /**
  * Backendmodule
  */
-array_insert($GLOBALS['BE_MOD'], 3, [
+ArrayUtil::arrayInsert($GLOBALS['BE_MOD'], 3, [
     'vereinsverwaltung' => [
         'verband' => [
             'tables' => ['tl_verband', 'tl_liga', 'tl_mannschaft', 'tl_spieler'],

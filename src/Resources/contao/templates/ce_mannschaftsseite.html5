@@ -12,7 +12,7 @@
   <div class="row">
       <?php foreach($this->mannschaft_bilder as $mannschaft_bild): ?>
         <div class="col-sm-12 col-md-4">
-          <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+          <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
               <a href="<?= $mannschaft_bild ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
                   <img src="<?= $mannschaft_bild ?>" class="img-thumbnail" width="250px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
               </a>

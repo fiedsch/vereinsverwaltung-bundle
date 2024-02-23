@@ -18,7 +18,7 @@ use Contao\Module;
 use Contao\BackendTemplate;
 use Contao\ContentModel;
 use Contao\Input;
-use Patchwork\Utf8;
+use function Symfony\Component\String\u;
 
 class ModuleMannschaftsseitenReader extends Module
 {
@@ -36,13 +36,13 @@ class ModuleMannschaftsseitenReader extends Module
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         if (TL_MODE == 'BE') {
             /** @var \BackendTemplate|object $objTemplate */
             $objTemplate = new BackendTemplate('be_wildcard');
 
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['mannschaftsseitenreader'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . u($GLOBALS['TL_LANG']['FMD']['mannschaftsseitenreader'][0])->upper() . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
@@ -58,7 +58,7 @@ class ModuleMannschaftsseitenReader extends Module
     /**
      * Generate the module
      */
-    protected function compile()
+    protected function compile(): void
     {
         // Falls wir einen Back-Link einbauen wollen:
         // $this->Template->referer = 'javascript:history.go(-1)';

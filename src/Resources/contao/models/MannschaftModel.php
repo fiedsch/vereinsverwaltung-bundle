@@ -28,7 +28,7 @@ class MannschaftModel extends Model
     /**
      * @return string
      */
-    public function getLinkedName()
+    public function getLinkedName(): string
     {
         return self::linkName($this->name, $this->id);
     }
@@ -38,7 +38,7 @@ class MannschaftModel extends Model
      * @param int $id
      * @return string
      */
-    public static function linkName($name, $id)
+    public static function linkName(string $name, int $id): string
     {
         $teampageId = Config::get('teampage');
         if ($teampageId) {

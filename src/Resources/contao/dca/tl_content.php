@@ -6,6 +6,8 @@
  * @license https://opensource.org/licenses/MIT
  */
 
+use Fiedsch\VereinsverwaltungBundle\VerbandModel;
+
 /* Mannschaftsliste */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['mannschaftsliste'] = '{type_legend},type,headline;{verband_legend},verband;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
 $GLOBALS['TL_DCA']['tl_content']['fields']['verband'] = [
@@ -16,7 +18,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['verband'] = [
     'eval'             => ['mandatory' => true, 'multiple' => true, 'tl_class' => 'w50'],
     'options_callback' => function() {
         $result = [];
-        $verbaende = \Fiedsch\VereinsverwaltungBundle\VerbandModel::findAll();
+        $verbaende = VerbandModel::findAll();
         if ($verbaende) {
             foreach ($verbaende as $verband) {
                 $result[$verband->id] = $verband->name;

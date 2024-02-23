@@ -6,7 +6,7 @@
   <?php foreach($this->mannschaftsliste as $verbandId => $ligen): ?>
     <h2><?= $this->verbaende[$verbandId]['name'] ?></h2>
     <?php if ($this->verbaende[$verbandId]['logo']): ?>
-      <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+      <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
         <a href="<?= $this->verbaende[$verbandId]['logo'] ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
           <img src="<?= $this->verbaende[$verbandId]['logo'] ?>" class="img-thumbnail" width="150px" alt="<?= $this->verbaende[$verbandId]['name'] ?>" itemprop="image">
         </a>

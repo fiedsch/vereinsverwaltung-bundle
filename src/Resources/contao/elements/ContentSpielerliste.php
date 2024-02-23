@@ -13,7 +13,7 @@
 namespace Fiedsch\VereinsverwaltungBundle;
 
 use Contao\ContentElement;
-use \Contao\FilesModel;
+use Contao\FilesModel;
 
 /**
  * Class ContentSpielerliste
@@ -34,7 +34,7 @@ class ContentSpielerliste extends ContentElement
     /**
      * Generate the content element
      */
-    public function compile()
+    public function compile(): void
     {
             $allespieler = SpielerModel::findAll([
                 'column' => ['pid=?'],
@@ -55,7 +55,7 @@ class ContentSpielerliste extends ContentElement
                     'member'  => $member,
                     'spieler' => $spieler,
                     'extra'   => [
-                         'avatar_path' => $file ? $file->path : null
+                         'avatar_path' => $file?->path
                     ]
                 ];
             }

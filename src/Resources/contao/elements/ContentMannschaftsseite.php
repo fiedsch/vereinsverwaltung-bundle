@@ -11,8 +11,9 @@ namespace Fiedsch\VereinsverwaltungBundle;
 use Contao\BackendTemplate;
 use Contao\ContentElement;
 use Contao\ContentModel;
-use Patchwork\Utf8;
-use \Contao\FilesModel;
+use Contao\FilesModel;
+use Contao\StringUtil;
+use function Symfony\Component\String\u;
 
 /**
  * Class ContentMannschaftsseite
@@ -33,13 +34,13 @@ class ContentMannschaftsseite extends ContentElement
     /**
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         if (TL_MODE == 'BE') {
             $objTemplate = new BackendTemplate('be_wildcard');
 
             $headline = $this->headline;
-            $objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['CTE']['mannschaftsseite'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . u($GLOBALS['TL_LANG']['CTE']['mannschaftsseite'][0])->upper() . ' ###';
             $objTemplate->id = $this->id;
             $objTemplate->link = $headline;
 
@@ -52,11 +53,11 @@ class ContentMannschaftsseite extends ContentElement
     /**
      * @param string $content
      */
-    protected function addDescriptionToTlHead($content)
+    protected function addDescriptionToTlHead(string $content): void
     {
         if ($GLOBALS['TL_HEAD']) {
             foreach ($GLOBALS['TL_HEAD'] as $i => $entry) {
-                if (preg_match("/description/", $entry)) {
+                if (str_contains($entry, "description")) {
                     unset($GLOBALS['TL_HEAD'][$i]);
                 }
             }
@@ -64,7 +65,7 @@ class ContentMannschaftsseite extends ContentElement
         $GLOBALS['TL_HEAD'][] = sprintf('<meta name="description" content="%s">', $content);
     }
 
-    public function compile()
+    public function compile(): void
     {
         $mannschaftModel = MannschaftModel::findById($this->mannschaft);
 
@@ -76,7 +77,7 @@ class ContentMannschaftsseite extends ContentElement
         $mannschaft_bilder = null;
         if ($mannschaftModel->avatar) {
             $mannschaft_bilder = [];
-            foreach (deserialize($mannschaftModel->avatar) as $uuid) {
+            foreach (StringUtil::deserialize($mannschaftModel->avatar) as $uuid) {
                 $mannschaft_bilder[] = FilesModel::findByUuid($uuid)->path;
                 /* // TODO(?)
                  * $imageObj = new Image(new File('example.jpg'));

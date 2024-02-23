@@ -15,7 +15,7 @@
         <td><?= $listitem['spieler']->tc ? '(TC)' : '' ?></td>
         <td>
           <?php if ($listitem['extra']['avatar_path']): ?>
-            <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="associatedMedia">
+            <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
               <a href="<?= $listitem['extra']['avatar_path'] ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
                 <img src="<?= $listitem['extra']['avatar_path'] ?>" class="img-thumbnail" width="150px" alt="<?= $listitem['member']->lastname ?>, <?= $listitem['member']->firstname ?>" itemprop="image">
               </a>

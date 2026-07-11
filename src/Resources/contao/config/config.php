@@ -13,6 +13,8 @@ ArrayUtil::arrayInsert($GLOBALS['BE_MOD'], 3, [
     ]
 ]);
 
+$GLOBALS['BE_MOD']['accounts']['member']['tables'][] = 'tl_zahlung';
+
 /**
  * Contentelemente
  */

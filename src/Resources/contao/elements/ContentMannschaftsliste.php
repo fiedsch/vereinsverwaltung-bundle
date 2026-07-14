@@ -33,21 +33,22 @@ class ContentMannschaftsliste extends ContentElement
 
     public function generate(): string
     {
-        if (TL_MODE == 'BE') {
-            $objTemplate = new BackendTemplate('be_wildcard');
-            $objTemplate->title = $this->headline;
-
-            $subject = [];
-            if ($this->verband) {
-                foreach (StringUtil::deserialize($this->verband) as $verband) {
-                    $verband = VerbandModel::findById($verband);
-                    $subject[] = $verband->name;
-                }
-            }
-
-            $objTemplate->wildcard = "### " . u($GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0])->upper() . ' ' . implode(',', $subject) . " ###";
-            return $objTemplate->parse();
-        }
+        // TODO
+        // if (TL_MODE == 'BE') {
+        //     $objTemplate = new BackendTemplate('be_wildcard');
+        //     $objTemplate->title = $this->headline;
+        //
+        //     $subject = [];
+        //     if ($this->verband) {
+        //         foreach (StringUtil::deserialize($this->verband) as $verband) {
+        //             $verband = VerbandModel::findById($verband);
+        //             $subject[] = $verband->name;
+        //         }
+        //     }
+        //
+        //     $objTemplate->wildcard = "### " . u($GLOBALS['TL_LANG']['CTE']['mannschaftsliste'][0])->upper() . ' ' . implode(',', $subject) . " ###";
+        //     return $objTemplate->parse();
+        // }
         return parent::generate();
     }
 

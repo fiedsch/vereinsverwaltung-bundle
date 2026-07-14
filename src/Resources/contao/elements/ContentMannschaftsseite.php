@@ -36,16 +36,17 @@ class ContentMannschaftsseite extends ContentElement
      */
     public function generate(): string
     {
-        if (TL_MODE == 'BE') {
-            $objTemplate = new BackendTemplate('be_wildcard');
-
-            $headline = $this->headline;
-            $objTemplate->wildcard = '### ' . u($GLOBALS['TL_LANG']['CTE']['mannschaftsseite'][0])->upper() . ' ###';
-            $objTemplate->id = $this->id;
-            $objTemplate->link = $headline;
-
-            return $objTemplate->parse();
-        }
+        // TODO
+        // if (TL_MODE == 'BE') {
+        //     $objTemplate = new BackendTemplate('be_wildcard');
+        //
+        //     $headline = $this->headline;
+        //     $objTemplate->wildcard = '### ' . u($GLOBALS['TL_LANG']['CTE']['mannschaftsseite'][0])->upper() . ' ###';
+        //     $objTemplate->id = $this->id;
+        //     $objTemplate->link = $headline;
+        //
+        //     return $objTemplate->parse();
+        // }
 
         return parent::generate();
     }

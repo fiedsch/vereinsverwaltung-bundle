@@ -1,3 +1,4 @@
+{#
 <?php $this->extend('block_searchable'); ?>
 
 <?php $this->block('content'); ?>
@@ -38,3 +39,13 @@
 <?php // $this->showTemplateVars() ?>
 
 <?php $this->endblock(); ?>
+#}
+
+{% extends "@Contao/content_element/_base.html.twig" %}
+
+{% block content %}
+
+    TODO
+    {{ dump() }}
+
+{% endblock %}

@@ -6,7 +6,7 @@
  * @license https://opensource.org/licenses/MIT
  */
 
-use Fiedsch\VereinsverwaltungBundle\VerbandModel;
+use Fiedsch\VereinsverwaltungBundle\Model\VerbandModel;
 
 /* Mannschaftsliste */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['mannschaftsliste'] = '{type_legend},type,headline;{verband_legend},verband;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space;{invisible_legend:hide},invisible,start,stop';

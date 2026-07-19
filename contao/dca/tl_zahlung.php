@@ -92,7 +92,7 @@ $GLOBALS['TL_DCA']['tl_zahlung'] = [
 
     'palettes' => [
         '__selector__' => [],
-        'default'      => '{title_legend},subject,amount,date',
+        'default'      => '{title_legend},subject,amount,date,startmonth,months,zahlungsart',
     ], // palettes
 
     'fields' => [
@@ -121,6 +121,21 @@ $GLOBALS['TL_DCA']['tl_zahlung'] = [
             'flag'      => 1, // Sort by initial letter ascending,
             'sql'       => "varchar(128) NOT NULL default ''",
         ],
+
+        'startmonth' => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_zahlung']['startmonth'],
+            'inputType' => 'text',
+            'eval'      => ['tl_class' => 'w50 wizard', 'rgxp' => 'date', 'datepicker' => true],
+            'sql'       => "varchar(10) NOT NULL default ''",
+        ],
+
+        'months' => [
+            'label'     => &$GLOBALS['TL_LANG']['tl_zahlung']['months'],
+            'inputType' => 'text',
+            'eval'      => ['tl_class' => 'w50 wizard' ],
+            'sql'       => "varchar(10) NOT NULL default ''",
+        ],
+
         'amount' => [
             'label'     => &$GLOBALS['TL_LANG']['tl_zahlung']['amount'],
             'exclude'   => true,
@@ -137,6 +152,15 @@ $GLOBALS['TL_DCA']['tl_zahlung'] = [
             'eval'      => ['tl_class' => 'w50 wizard', 'rgxp' => 'date', 'datepicker' => true],
             'sql'       => "varchar(10) NOT NULL default ''",
         ],
+
+        'zahlungsart' => [
+             'label'     => &$GLOBALS['TL_LANG']['tl_zahlung']['zahlungsart'],
+            'inputType' => 'select',
+            'options'   => ['bar', 'ueberweisung'],
+            //'reference' => &$GLOBALS['TL_LANG']['payment_discount_options'],
+            'eval'      => ['tl_class' => 'w50', 'includeBlankOption' => false],
+            'sql'       => "varchar(32) NOT NULL default 'ueberweisung'",
+        ]
 
 
 

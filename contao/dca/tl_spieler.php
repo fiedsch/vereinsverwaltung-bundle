@@ -110,7 +110,7 @@ $GLOBALS['TL_DCA']['tl_spieler'] = [
             'inputType'  => 'select',
             'eval'       => ['doNotCopy'=>true,'tl_class' => 'w50', 'includeBlankOption' => true, 'chosen' => true],
             'foreignKey' => 'tl_member.CONCAT(firstname, " ", lastname)',
-            'options_callback' => function(DataContainer $dc) {
+            'options_callback' => function(DC_Table $dc) {
                 $result = [];
                 $query =
                 'SELECT * FROM tl_member ORDER BY tl_member.firstname, tl_member.lastname';

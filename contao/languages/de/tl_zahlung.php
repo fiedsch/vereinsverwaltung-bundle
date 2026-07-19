@@ -3,7 +3,7 @@
 $GLOBALS['TL_LANG']['tl_zahlung']['title_legend'] = 'Zahlung';
 
 $GLOBALS['TL_LANG']['tl_zahlung']['subject'] = [
-    'Betreff',
+    'Betreff (Zahlung für ...)',
     'Zahlung von ....'
 ];
 

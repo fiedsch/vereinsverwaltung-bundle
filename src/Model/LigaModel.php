@@ -1,6 +1,6 @@
 <?php
 
-namespace Fiedsch\VereinsverwaltungBundle;
+namespace Fiedsch\VereinsverwaltungBundle\Model;
 
 use Contao\Model;
 

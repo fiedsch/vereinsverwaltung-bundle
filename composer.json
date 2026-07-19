@@ -22,14 +22,14 @@
       "Fiedsch\\VereinsverwaltungBundle\\": "src/"
     },
     "classmap": [
-      "src/Resources/contao"
+      "contao"
     ],
     "exclude-from-classmap": [
-      "src/Resources/contao/assets",
-      "src/Resources/contao/config",
-      "src/Resources/contao/dca",
-      "src/Resources/contao/languages",
-      "src/Resources/contao/templates"
+      "contao/assets",
+      "contao/config",
+      "contao/dca",
+      "contao/languages",
+      "contao/templates"
     ]
   },
   "extra": {

@@ -7,7 +7,7 @@
  */
 
 /**
- * Front end module "Manschaftsseiten reader".
+ * Front end frontend_module "Manschaftsseiten reader".
  *
  * @author Andreas Fieger <https://github.com/fiedsch>
  */
@@ -57,7 +57,7 @@ class ModuleMannschaftsseitenReader extends Module
 
 
     /**
-     * Generate the module
+     * Generate the frontend_module
      */
     protected function compile(): void
     {

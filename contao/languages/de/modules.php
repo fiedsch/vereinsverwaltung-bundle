@@ -19,7 +19,7 @@ $GLOBALS['TL_LANG']['FMD']['vereinsverwaltung'] = [
     'Vereinsverwaltung'
 ];
 
-$GLOBALS['TL_LANG']['FMD']['mannschaftsseitenreader'] = [
+$GLOBALS['TL_LANG']['FMD']['mannschaftsseiten_reader'] = [
     'Mannschaftsseitenreader',
     'Stellt eine Mannschaftsseite dar. Die ID der Mannschaft wird in der URL übergeben.'
 ];

@@ -92,7 +92,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['payment_type'] = [
     'inputType' => 'select',
     'options'   => ['monatlich', 'halbjaehrlich', 'jaehrlich'],
     'reference' => &$GLOBALS['TL_LANG']['tl_member']['payment_type_options'],
-    'eval'      => ['tl_class' => 'w50', 'includeBlankOption' => true, 'mandatory' => true],
+    'eval'      => ['tl_class' => 'w50', 'includeBlankOption' => true, 'mandatory' => false],
     'sql'       => "varchar(32) NOT NULL default ''",
 ];
 

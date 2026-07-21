@@ -29,11 +29,13 @@ class MannschaftsseitenReaderController extends AbstractFrontendModuleController
 
         if (empty($id)) {
             $template->mannschaft = null;
+            $template->mannschaftsseite = null;
             return $template->getResponse();
         }
         $mannschaft = MannschaftModel::findById(Input::get('id'));
         if (!$mannschaft) {
             $template->mannschaft = null;
+            $template->mannschaftsseite = null;
             return $template->getResponse();
         }
 

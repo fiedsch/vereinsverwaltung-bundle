@@ -141,8 +141,7 @@ $GLOBALS['TL_DCA']['tl_member']['list']['operations']['zahlung'] = [
 //     return  $originalCallbackResult;
 // };
 
-// generate monthOfBirth from dateOfBirth
-$GLOBALS['TL_DCA']['tl_member']['fields']['dateOfBirth']['save_callback'][] = ['Fiedsch\VereinsverwaltungBundle\DcaHelper','generateMonthOfBirth'];
+// generate monthOfBirth from dateOfBirth see MonthOfBirthListener
 
 // we don't want email to be mandatory
 $GLOBALS['TL_DCA']['tl_member']['fields']['email']['eval']['mandatory'] = false;

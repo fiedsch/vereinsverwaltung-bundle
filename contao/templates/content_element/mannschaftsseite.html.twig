@@ -1,51 +1,37 @@
-{#
-<?php $this->extend('block_searchable'); ?>
-
-<?php $this->block('content'); ?>
-
-  <div class="row">
-      <div class="col-sm-12">
-          <h1><?= $this->mannschaft_name ?></h1>
-      </div>
-  </div>
-
-  <?php if ($this->mannschaft_bilder): ?>
-  <div class="row">
-      <?php foreach($this->mannschaft_bilder as $mannschaft_bild): ?>
-        <div class="col-sm-12 col-md-4">
-          <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
-              <a href="<?= $mannschaft_bild ?>" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
-                  <img src="<?= $mannschaft_bild ?>" class="img-thumbnail" width="250px" alt="<?= $this->mannschaf_name ?>" itemprop="image">
-              </a>
-          </figure>
-        </div>
-    <?php endforeach; ?>
-  </div>
-
-    <?php if ($this->verbandsseite): ?>
-      <div class="col-sm-12">
-        <a target="_blank" href="<?= $this->verbandsseite ?>">Spielplan und Tabellen</a>
-      </div>
-    <?php endif; ?>
-  <?php endif; ?>
-</div>
-
-<div class="row">
-  <div class="spielerliste col-md-6 col-xs-12">
-     <?= $this->spielerliste; ?>
-  </div>
-</div>
-
-<?php // $this->showTemplateVars() ?>
-
-<?php $this->endblock(); ?>
-#}
-
 {% extends "@Contao/content_element/_base.html.twig" %}
 
 {% block content %}
 
-    TODO: ContentElement Mannschaftsseite Template
-    {{ dump() }}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>{{ mannschaft_name }}</h1>
+        </div>
+    </div>
+
+    {% if mannschaft_bilder is not empty %}
+        <div class="row">
+            {%  for mannschaft_bild in mannschaft_bilder %}
+            <div class="col-sm-12 col-md-4">
+                <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
+                    <a href="{{ mannschaft_bild  }}" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
+                        <img src="{{ mannschaft_bild }}" class="img-thumbnail" width="250px" alt="{{ mannschaft_name }}" itemprop="image">
+                    </a>
+                </figure>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if verbandsseite is not empty %}
+        <div class="col-sm-12">
+            <a target="_blank" href="{{ verbandsseite }}">Spielplan und Tabellen</a>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="spielerliste col-md-6 col-xs-12">
+            {{ spielerliste|raw }}
+        </div>
+    </div>
 
 {% endblock %}

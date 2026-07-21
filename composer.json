@@ -1,7 +1,7 @@
 {
   "name": "fiedsch/vereinsverwaltung-bundle",
   "type": "contao-bundle",
-  "description": "Contao 4 Bundle: Vereinsverwaltung (Mannschaften)",
+  "description": "Contao Bundle: Vereinsverwaltung (Mannschaften)",
   "license": "MIT",
   "authors": [
     {
@@ -11,8 +11,8 @@
     }
   ],
   "require": {
-    "php": "^8.0",
-    "contao/core-bundle": "^4.4 || ^5.7"
+    "php": "^8.4",
+    "contao/core-bundle": "^5.7"
   },
   "conflict": {
     "fiedsch/ligaverwaltung-bundle": "*"
@@ -20,17 +20,7 @@
   "autoload": {
     "psr-4": {
       "Fiedsch\\VereinsverwaltungBundle\\": "src/"
-    },
-    "classmap": [
-      "contao"
-    ],
-    "exclude-from-classmap": [
-      "contao/assets",
-      "contao/config",
-      "contao/dca",
-      "contao/languages",
-      "contao/templates"
-    ]
+    }
   },
   "extra": {
     "contao-manager-plugin": "Fiedsch\\VereinsverwaltungBundle\\ContaoManager\\Plugin",

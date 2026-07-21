@@ -113,14 +113,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['payment_discount'] = [
 ];
 
 
-// Add an operation to the list view to edit/create children
-$GLOBALS['TL_DCA']['tl_member']['list']['operations']['zahlung'] = [
-    'href'  => 'table=tl_zahlung',
-    'icon'  => 'tablewizard.svg',
-];
-
-
-
 // // Virtuelles Feld Saldo
 // $GLOBALS['TL_DCA']['tl_member']['fields']['saldo'] = [
 //     'label'     => &$GLOBALS['TL_LANG']['tl_member']['saldo'],

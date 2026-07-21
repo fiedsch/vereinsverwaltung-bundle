@@ -11,7 +11,7 @@
 Wenn bestimmte Felder der Mitgliederverwaltung nicht benötigt werden (z.B. "Firma", "Staat", "Land"), 
 kann das über die Konfiguration der Anwendung erfolgen.
 
-* Anlegen falls noch nicht existent: `app/Resources/contao/dca/tl_member.php`
+* Anlegen falls noch nicht existent: `contao/dca/tl_member.php`
 * In der `tl_member.php` die gewünschten Änderungen vornehmen. Z.B.
 
 ```php

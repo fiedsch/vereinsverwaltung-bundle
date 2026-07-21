@@ -6,7 +6,11 @@
 * Mitgliedsbeitrag Nachlass ("beitragsfrei")
 
 
-### Zahlungen
+## Zahlungen
 
 * Zahlungsart (bar, unbar)
 * Zahlungsintervall (keine Zahlung)
+
+## Technik
+
+* DCA Definitionen verschlanken (z.B. `label` eentfällt, `operations` mittels Defaults kürzer, ...)

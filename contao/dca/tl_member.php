@@ -47,7 +47,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['avatar'] = [
 /* new fields */
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['nickname'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['nickname'],
     'inputType' => 'text',
     'exclude'   => true,
     'search'    => true,
@@ -58,13 +57,11 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['nickname'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['monthOfBirth'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['monthOfBirth'],
     'sorting'   => true,
     'sql'       => "varchar(32) NOT NULL default ''",
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['anonymize'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['anonymize'],
     'inputType' => 'checkbox',
     'filter'    => true,
     'eval'      => ['tl_class' => 'clr m12 w50'],
@@ -72,21 +69,18 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['anonymize'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['member_since'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['member_since'],
     'inputType' => 'text',
     'eval'      => ['tl_class' => 'w50 wizard', 'rgxp' => 'date', 'datepicker' => true],
     'sql'       => "varchar(10) NOT NULL default ''",
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['member_until'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['member_until'],
     'inputType' => 'text',
     'eval'      => ['tl_class' => 'w50 wizard', 'rgxp' => 'date', 'datepicker' => true],
     'sql'       => "varchar(10) NOT NULL default ''",
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['member_type'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['member_type'],
     'inputType' => 'select',
     'options'   => ['aktiv', 'passiv', 'foerderer'],
     'reference' => &$GLOBALS['TL_LANG']['member_type_options'],
@@ -95,7 +89,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['member_type'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['payment_type'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['payment_type'],
     'inputType' => 'select',
     'options'   => ['monatlich', 'halbjaehrlich', 'jaehrlich'],
     'reference' => &$GLOBALS['TL_LANG']['tl_member']['payment_type_options'],
@@ -104,7 +97,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['payment_type'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['payment_discount'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['payment_discount'],
     'inputType' => 'select',
     'options'   => ['voll', 'vorstand', 'sozialhilfe', 'behindert'],
     'reference' => &$GLOBALS['TL_LANG']['payment_discount_options'],

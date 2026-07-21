@@ -125,7 +125,6 @@ $GLOBALS['TL_DCA']['tl_spieler'] = [
         ],
 
         'tc' => [
-            'label'      => &$GLOBALS['TL_LANG']['tl_spieler']['tc'],
             'exclude'    => true,
             'search'     => false,
             'filter'     => false,

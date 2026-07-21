@@ -14,4 +14,4 @@
 
 ## Technik
 
-* DCA Definitionen verschlanken (z.B. `label` eentfällt, `operations` mittels Defaults kürzer, ...)
+* Breadcrumb besser lesbar machen (kein "Element mit ID ...")

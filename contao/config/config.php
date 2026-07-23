@@ -22,4 +22,5 @@ $GLOBALS['TL_MODELS']['tl_verband'] = 'Fiedsch\VereinsverwaltungBundle\Model\Ver
 $GLOBALS['TL_MODELS']['tl_liga'] = 'Fiedsch\VereinsverwaltungBundle\Model\LigaModel';
 $GLOBALS['TL_MODELS']['tl_mannschaft'] = 'Fiedsch\VereinsverwaltungBundle\Model\MannschaftModel';
 $GLOBALS['TL_MODELS']['tl_spieler'] = 'Fiedsch\VereinsverwaltungBundle\Model\SpielerModel';
+$GLOBALS['TL_MODELS']['tl_zahlung'] = 'Fiedsch\VereinsverwaltungBundle\Model\ZahlungModel';
 

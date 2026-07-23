@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+
+    _instanceof:
+        Contao\CoreBundle\Framework\FrameworkAwareInterface:
+            calls:
+                - [setFramework, ['@contao.framework']]
+
+    fiedsch.vereinsverwaltung.command.spielerliste:
+        class: Fiedsch\VereinsverwaltungBundle\Command\SpielerAbzugCommand
+        arguments:
+            - '@database_connection'

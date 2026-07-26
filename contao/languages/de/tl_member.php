@@ -8,6 +8,11 @@ $GLOBALS['TL_LANG']['tl_member']['avatar'] = [
     'Bild des Spielers.'
 ];
 
+$GLOBALS['TL_LANG']['tl_member']['documents'] = [
+    'Dokumente',
+    'Dem Mitglied zugeordnete Dokumente.'
+];
+
 $GLOBALS['TL_LANG']['tl_member']['nickname'] = [
     'Nickname',
     'Nickname des Mitglieds. ',

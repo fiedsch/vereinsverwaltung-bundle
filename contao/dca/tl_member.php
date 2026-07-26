@@ -20,6 +20,7 @@ PaletteManipulator::create()
     ->addLegend('zahlung_legend', 'verein_legend', PaletteManipulator::POSITION_AFTER)
     // Felder (fields)
     ->addField('avatar', 'gender', PaletteManipulator::POSITION_AFTER)
+    ->addField('documents', 'avatar', PaletteManipulator::POSITION_AFTER)
     ->addField('member_type', 'zahlung_legend', PaletteManipulator::POSITION_APPEND)
     ->addField('payment_type', 'zahlung_legend', PaletteManipulator::POSITION_APPEND)
     ->addField('payment_discount', 'zahlung_legend', PaletteManipulator::POSITION_APPEND)
@@ -35,7 +36,6 @@ PaletteManipulator::create()
 
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['avatar'] = [
-    'label'     => &$GLOBALS['TL_LANG']['tl_member']['avatar'],
     'exclude'   => true,
     'search'    => false,
     'filter'    => false,
@@ -43,6 +43,16 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['avatar'] = [
     'eval'      => ['tl_class' => 'clr w50', 'fieldType' => 'radio', 'filesOnly' => true, 'extensions' => 'jpg,jpeg,png', 'icon' => 'pickfile.svg'],
     'sql'       => "blob NULL",
 ];
+
+$GLOBALS['TL_DCA']['tl_member']['fields']['documents'] = [
+    'exclude'   => true,
+    'search'    => false,
+    'filter'    => false,
+    'inputType' => 'fileTree',
+    'eval'      => ['tl_class' => 'clr', 'fieldType' => 'checkbox', 'multiple' => true, 'filesOnly' => true, 'extensions' => 'jpg,jpeg,png,pdf', 'icon' => 'pickfile.svg'],
+    'sql'       => "blob NULL",
+];
+
 
 /* new fields */
 

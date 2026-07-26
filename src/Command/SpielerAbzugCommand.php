@@ -5,6 +5,8 @@ namespace Fiedsch\VereinsverwaltungBundle\Command;
 use Contao\CoreBundle\Framework\FrameworkAwareInterface;
 use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\Date;
+use Contao\FilesModel;
+use Contao\StringUtil;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Console\Command\Command;
 use Contao\MemberModel;
@@ -46,10 +48,19 @@ class SpielerAbzugCommand  extends Command implements FrameworkAwareInterface
 
         $members = MemberModel::findAll(['limit' => 5, 'order' => 'lastname DESC']);
         foreach ($members as $member) {
-            dump($member->lastname);
-            $zahlungen = ZahlungModel::findByMemberId($member->id, ['order' => 'date ASC']);
-            foreach ($zahlungen ?? [] as $zahlung) {
-                dump([$zahlung->subject, $zahlung->amount, Date::parse('Y-m-d', $zahlung->date)]);
+            printf("%s %s", $member->lastname, $member->firstname);
+            // $zahlungen = ZahlungModel::findByMemberId($member->id, ['order' => 'date ASC']);
+            // foreach ($zahlungen ?? [] as $zahlung) {
+            //     dump([$zahlung->subject, $zahlung->amount, Date::parse('Y-m-d', $zahlung->date)]);
+            // }
+            if ($member->documents !== null) {
+                foreach (StringUtil::deserialize($member->documents) as $document) {
+                    $file = FilesModel::findByUuid(StringUtil::binToUuid($document));
+                    // printf("\t%s\n", $file->path);
+                    printf("\t%s\n", 'Mitgliedsantrag ja');
+                }
+            } else {
+                printf("\t%s\n", 'Mitgliedsantrag nein');
             }
         }
 

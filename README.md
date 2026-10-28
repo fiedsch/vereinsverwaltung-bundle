@@ -16,19 +16,21 @@ kann das über die Konfiguration der Anwendung erfolgen.
 
 ```php
 <?php
+use Contao\CoreBundle\DataContainer\PaletteManipulator;
 
 /* 
  * modify palette remove unused fields
  */
-
-foreach (['company', 'state', 'country', 'fax', 'website', 'language', 'assignDir'] as $field) {
-    $GLOBALS['TL_DCA']['tl_member']['palettes']['default']
-        = str_replace(",$field", '', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
-    // also remove these fields from the search,sort,filter, panel
-    foreach (['search', 'sorting', 'filter'] as $paletteOption) {
-        $GLOBALS['TL_DCA']['tl_member']['fields'][$field][$paletteOption] = false;
-    }
-}
+PaletteManipulator::create()
+  ->removeField('company')
+  ->removeField('state')
+  ->removeField('country') 
+  ->removeField('fax') 
+  ->removeField('website')
+  ->removeField('language')
+  ->removeField('assignDir')
+  ->applyToPalette('default', 'tl_member')
+;  
 
 /*
  * Do not remove from palette, but disable search, sort, and filter 

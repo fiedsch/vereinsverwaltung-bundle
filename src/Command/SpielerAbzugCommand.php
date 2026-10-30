@@ -46,21 +46,32 @@ class SpielerAbzugCommand  extends Command implements FrameworkAwareInterface
         // Contao "booten"
         $this->framework->initialize();
 
-        $members = MemberModel::findAll(['limit' => 5, 'order' => 'lastname DESC']);
+        $members = MemberModel::findAll(['order' => 'lastname DESC']);
         foreach ($members as $member) {
-            printf("%s %s", $member->lastname, $member->firstname);
+            $output->writeln(sprintf("<info>%s %s</info>", $member->lastname, $member->firstname));
             // $zahlungen = ZahlungModel::findByMemberId($member->id, ['order' => 'date ASC']);
             // foreach ($zahlungen ?? [] as $zahlung) {
             //     dump([$zahlung->subject, $zahlung->amount, Date::parse('Y-m-d', $zahlung->date)]);
             // }
-            if ($member->documents !== null) {
-                foreach (StringUtil::deserialize($member->documents) as $document) {
-                    $file = FilesModel::findByUuid(StringUtil::binToUuid($document));
-                    // printf("\t%s\n", $file->path);
-                    printf("\t%s\n", 'Mitgliedsantrag ja');
-                }
+            // if ($member->documents !== null) {
+            //     foreach (StringUtil::deserialize($member->documents) as $document) {
+            //         $file = FilesModel::findByUuid(StringUtil::binToUuid($document));
+            //         // printf("\t%s\n", $file->path);
+            //         printf("\t%s\n", 'Mitgliedsantrag ja');
+            //     }
+            // } else {
+            //     printf("\t%s\n", 'Mitgliedsantrag nein');
+            // }
+
+            // dd($member);
+            if (!$member->avatar) {
+                $output->writeln("  * Kein Bild zugeordnet");
             } else {
-                printf("\t%s\n", 'Mitgliedsantrag nein');
+                $memberImage = FilesModel::findByUuid($member->avatar);
+                if (!$memberImage) {
+                    $output->writeln("  * Bild existiert nicht mehr!");
+                }
+                $output->writeln("  * {$memberImage->path}");
             }
         }
 

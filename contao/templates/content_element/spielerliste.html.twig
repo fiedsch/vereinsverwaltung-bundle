@@ -1,36 +1,50 @@
 {% extends "@Contao/content_element/_base.html.twig" %}
+{% use "@Contao/component/_figure.html.twig" %}
 
 {% block content %}
 
-{% if listitems is not empty %}
-  <table class="table table-hover table-condensed">
-    <tbody>
-    {% for listitem in listitems %}
-    {% if listitem.member.anonymize == '1' %}
-        {#  nicht ausgeben #}
-    {% else %}
-      <tr>
-        <td>
-            {{ listitem.member.lastname }}, {{ listitem.member.firstname }}
-        </td>
-        {% if showdetails %}
-            <td>{{ listitem.spieler.tc ? '(TC)' : ''}}</td>
-            <td>
-                {% if  listitem.extra.avatar_path is not empty %}
-                    <figure class="image_container float_above" style="margin-right:1em;" itemscope="" itemtype="https://schema.org/ImageObject" itemprop="associatedMedia">
-                        <a href="{{ listitem.extra.avatar_path }}" data-lightbox="lb1" itemprop="contentUrl" class="cboxElement">
-                            <img src="{{ listitem.extra.avatar_path }}" class="img-thumbnail" width="150px" alt="{{ listitem.member.lastname}}, {{ listitem.member.firstname }}" itemprop="image">
-                        </a>
-                    </figure>
-                {% endif %}
-            </td>
-        {% endif %}
-      </tr>
-        {% endif %}
-    {% endfor %}
-    </tbody>
-  </table>
-{% endif %}
+    {% set spieler_bild = picture_config({
+        width: 150,
+        resizeMode: 'proportional',
+        sizes: '0.5,1,2'
+    }) %}
 
+    {% if listitems is not empty %}
+        <table class="table table-hover table-condensed">
+            <tbody>
+            {% for listitem in listitems %}
+                {% if listitem.member.anonymize == '1' %}
+                    {#  nicht ausgeben #}
+                {% else %}
+                    <tr>
+                        <td>
+                            {{ listitem.member.lastname }}, {{ listitem.member.firstname }}
+                        </td>
+                        {% if showdetails %}
+                            <td>{{ listitem.spieler.tc ? '(TC)' : ''}}</td>
+                            <td>
+                                {% if  listitem.extra.avatar_path is not empty %}
 
+                                    {% set image_options = {
+                                        metadata: { alt: "Bild von "~listitem.member.lastname~", "~listitem.member.firstname },
+                                        options: {
+                                            img_attr: { class: 'img-thumbnail' }
+                                        },
+                                        enableLightbox: true
+                                    } %}
+                                    {% set image = figure(listitem.extra.avatar_path, spieler_bild, image_options) %}
+                                    {% if image %}
+                                        {% with {figure: image} %}{{ block('figure_component') }}{% endwith %}
+                                    {% endif %}
+
+                                {% endif %} {# hat Bild #}
+                            </td>
+                        {% endif %} {# if showdetails #}
+                    </tr>
+                    {% endif %} {# amonymize #}
+            {% endfor %} {# for listitem in listitems #}
+            </tbody>
+        </table>
+
+    {% endif %}
 {% endblock %}
